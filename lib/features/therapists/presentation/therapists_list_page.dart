@@ -16,6 +16,19 @@ class TherapistsListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Therapist> list = [
       Therapist(id: '1', name: 'Эмилия', surname: 'Кларк', experience: 8, avatar: 'i.pravatar.cc/150?img=1'),
+      Therapist(id: '2', name: 'Лена', surname: 'Хинди', experience: 7, avatar: 'i.pravatar.cc/150?img=5'),
+      Therapist(id: '3', name: 'Крисс', surname: 'Эванс', experience:11, avatar: 'i.pravatar.cc/150?img=11'),
+      Therapist(id: '4', name: 'Девид', surname: 'Холс', experience: 9, avatar: 'i.pravatar.cc/150?img=13'),
+      Therapist(id: '5', name: 'Дональд', surname: 'Девис', experience: 7, avatar: 'i.pravatar.cc/150?img=51'),
+      Therapist(id: '6', name: 'Жеймс', surname: 'Жонсон', experience: 12, avatar: 'i.pravatar.cc/150?img=53'),
+      Therapist(id: '7', name: 'Патрик', surname: 'Лоуренс', experience: 15, avatar: 'i.pravatar.cc/150?img=59'),
+      Therapist(id: '8', name: 'Жефри', surname: 'Перес', experience: 10, avatar: 'i.pravatar.cc/150?img=68'),
+      Therapist(id: '9', name: 'Синтия', surname: 'Лоу', experience: 11, avatar: 'i.pravatar.cc/150?img=49'),
+      Therapist(id: '10', name: 'Мэри', surname: 'Кеннеди', experience: 7, avatar: 'i.pravatar.cc/150?img=16'),
+      Therapist(id: '11', name: 'Гвендолин', surname: 'Роберсон', experience: 8, avatar: 'i.pravatar.cc/150?img=26'),
+      Therapist(id: '12', name: 'Наоми', surname: 'Женкинс', experience: 9, avatar: 'i.pravatar.cc/150?img=32'),
+      Therapist(id: '13', name: 'Диана', surname: 'Андерсон', experience: 11, avatar: 'i.pravatar.cc/150?img=47'),
+      Therapist(id: '13', name: 'Сандра', surname: 'Томсон', experience: 8, avatar: 'i.pravatar.cc/150?img=48'),
     ];
 
     return Scaffold(
