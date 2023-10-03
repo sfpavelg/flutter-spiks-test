@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btn_go_to_home_page":
             MessageLookupByLibrary.simpleMessage("go to home page"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirmation": MessageLookupByLibrary.simpleMessage("Confirm"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
         "delete_failed": MessageLookupByLibrary.simpleMessage("Delete failed"),
@@ -46,21 +47,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "error_occurred":
             MessageLookupByLibrary.simpleMessage("Error occurred"),
+        "filters": MessageLookupByLibrary.simpleMessage("Filters"),
         "full_name_creator": MessageLookupByLibrary.simpleMessage(
             "REPLACE!!! Full name creator"),
         "home": MessageLookupByLibrary.simpleMessage("Home menu"),
         "load_failed": MessageLookupByLibrary.simpleMessage("Load failed"),
         "load_image": MessageLookupByLibrary.simpleMessage("Load image"),
+        "more_than_5000R":
+            MessageLookupByLibrary.simpleMessage("More than 5000 ₽̶"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
+        "session_cost": MessageLookupByLibrary.simpleMessage("Session_cost"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "show_psychologists":
+            MessageLookupByLibrary.simpleMessage("Show Psychologists"),
         "therapist_list":
             MessageLookupByLibrary.simpleMessage("Therapist list"),
         "therapists": MessageLookupByLibrary.simpleMessage("Therapists"),
         "try_again": MessageLookupByLibrary.simpleMessage("Try again"),
         "try_again_description": MessageLookupByLibrary.simpleMessage(
             "Try update data again or contact technical support."),
+        "up_to_2500R": MessageLookupByLibrary.simpleMessage("Up to 2500 ₽̶"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

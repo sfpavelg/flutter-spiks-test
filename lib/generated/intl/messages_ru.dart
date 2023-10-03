@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btn_go_to_home_page":
             MessageLookupByLibrary.simpleMessage("Перейти на главную страницу"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+        "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
         "confirmation": MessageLookupByLibrary.simpleMessage("Подтвердить"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Темная тема"),
         "delete_failed":
@@ -47,21 +48,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "error_occurred":
             MessageLookupByLibrary.simpleMessage("Возникла ошибка"),
+        "filters": MessageLookupByLibrary.simpleMessage("Фильтры"),
         "full_name_creator": MessageLookupByLibrary.simpleMessage(
             "Замените!!! Полное имя создателя"),
         "home": MessageLookupByLibrary.simpleMessage("Страница меню"),
         "load_failed": MessageLookupByLibrary.simpleMessage("Ошибка загрузки"),
         "load_image": MessageLookupByLibrary.simpleMessage("Загрузка картинки"),
+        "more_than_5000R":
+            MessageLookupByLibrary.simpleMessage("Более 5 000 ₽̶"),
         "no": MessageLookupByLibrary.simpleMessage("Нет"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "reset": MessageLookupByLibrary.simpleMessage("Сбросить"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
+        "session_cost":
+            MessageLookupByLibrary.simpleMessage("Стоимость сессии"),
         "setting": MessageLookupByLibrary.simpleMessage("Настройки"),
+        "show_psychologists":
+            MessageLookupByLibrary.simpleMessage("Показать Психологов"),
         "therapist_list": MessageLookupByLibrary.simpleMessage("Список врачей"),
         "therapists": MessageLookupByLibrary.simpleMessage("Психологи"),
         "try_again":
             MessageLookupByLibrary.simpleMessage("Попробовать ещё раз"),
         "try_again_description": MessageLookupByLibrary.simpleMessage(
             "Попробуйте обновить данные снова или обратиться в техническую поддержку."),
+        "up_to_2500R": MessageLookupByLibrary.simpleMessage("До 2 500 ₽̶"),
         "yes": MessageLookupByLibrary.simpleMessage("Да")
       };
 }

@@ -329,6 +329,78 @@ class S {
       args: [],
     );
   }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filters`
+  String get filters {
+    return Intl.message(
+      'Filters',
+      name: 'filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset`
+  String get reset {
+    return Intl.message(
+      'Reset',
+      name: 'reset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Session_cost`
+  String get session_cost {
+    return Intl.message(
+      'Session_cost',
+      name: 'session_cost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Up to 2500 ₽̶`
+  String get up_to_2500R {
+    return Intl.message(
+      'Up to 2500 ₽̶',
+      name: 'up_to_2500R',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More than 5000 ₽̶`
+  String get more_than_5000R {
+    return Intl.message(
+      'More than 5000 ₽̶',
+      name: 'more_than_5000R',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'psychologist\'s_age' key
+
+  /// `Show Psychologists`
+  String get show_psychologists {
+    return Intl.message(
+      'Show Psychologists',
+      name: 'show_psychologists',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
