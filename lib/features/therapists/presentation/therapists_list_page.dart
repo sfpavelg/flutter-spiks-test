@@ -3,9 +3,12 @@ import 'package:flutter_spiks_test/core/themes/theme_class.dart';
 import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapists_models.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapist_item.dart';
+import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapists_list_filter.dart';
 import 'package:flutter_spiks_test/generated/l10n.dart';
 import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/paginated_sliver_list.dart';
 import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pagination_status.dart';
+
+import '../../../core/values/icons/outline_icons.dart';
 
 /// Страница просмотра списка терапевтов
 /// @TODO реализовать
@@ -35,6 +38,18 @@ class TherapistsListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.of(context).therapists),
         automaticallyImplyLeading: false,
+        shape: const ContinuousRectangleBorder(  //Закругляем края
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(48),
+            bottomRight: Radius.circular(48),
+          ),
+        ),
+        actions: [
+          IconButton(onPressed: () async =>
+              await TherapistsListFilter.openFilter(context),
+            icon: Icon(OutlineIcons.settings),
+          ),
+        ],
       ),
       body: CustomScrollView(slivers: [
         PaginatedSliverList(
