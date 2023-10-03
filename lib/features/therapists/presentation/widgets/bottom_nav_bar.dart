@@ -67,8 +67,10 @@ class BottomNavBar extends StatelessWidget {
       currentIndex: bottomNav.index,
       onTap: (value) {
         switch (value) {
-          case 0: context.go(AppRouter.therapistsListPath);
-          case 1: context.go(AppRouter.settingPath);
+          case 0:
+            context.go(AppRouter.therapistsListPath);
+          case 1:
+            context.go(AppRouter.settingPath);
         }
       },
     );
