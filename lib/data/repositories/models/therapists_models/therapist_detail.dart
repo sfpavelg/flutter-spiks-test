@@ -16,6 +16,7 @@ class TherapistDetail extends Therapist {
     required super.surname,
     super.avatar,
     required super.experience,
+    required super.costOfServices,
     required this.workPrinciples,
     required this.biography,
     required this.videoPresentationUrl,

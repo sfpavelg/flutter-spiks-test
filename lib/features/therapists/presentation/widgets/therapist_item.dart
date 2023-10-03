@@ -51,7 +51,8 @@ class TherapistListItem extends StatelessWidget {
                               ),
                               const Gap(4),
                               if (therapist.mainSpecialization != null)
-                                Text(therapist.mainSpecialization!,
+                                Text(
+                                  therapist.mainSpecialization!,
                                   style: context.textTheme.bodySmall,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -63,6 +64,41 @@ class TherapistListItem extends StatelessWidget {
                           OutlineIcons.right,
                           color: context.scheme.onBackground,
                           size: 16,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.business_center,
+                                  color: Color(0xFF38B7FF),
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  'Опыт работы - ${therapist.experience} лет',
+                                  maxLines: 1,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              '${therapist.costOfServices.toString().replaceAllMapped(
+                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                    (Match m) => '${m[1]} ',
+                              )} ₽̶',
+                              style: context.textTheme.titleLarge,
+                              maxLines: 1,
+                            ),
+                          ],
                         ),
                       ],
                     ),

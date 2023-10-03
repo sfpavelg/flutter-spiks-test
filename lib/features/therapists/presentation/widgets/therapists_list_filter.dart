@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 class TherapistsListFilter {
   static Future<void> openFilter(BuildContext context) async {
     await Navigator.of(context).push(
@@ -22,14 +24,14 @@ class _TherapistsListFilter extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text(
-                    "Закрыть",
+                  child: Text(
+                    S.of(context).close,
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
                 Center(
                   child: Text(
-                    "Фильтр",
+                    S.of(context).filters,
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
@@ -37,8 +39,8 @@ class _TherapistsListFilter extends StatelessWidget {
                   onPressed: () {
                     // Ваша логика сброса фильтра
                   },
-                  child: const Text(
-                    "Сбросить",
+                  child: Text(
+                    S.of(context).reset,
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
