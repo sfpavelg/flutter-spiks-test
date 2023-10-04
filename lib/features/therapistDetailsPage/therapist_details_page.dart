@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapist.dart';
 import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapists_data.dart';
 import 'package:flutter_spiks_test/router/app_router.dart';
@@ -27,9 +28,16 @@ class TherapistDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      // Устанавливаем прозрачный цвет statusBar
+      statusBarIconBrightness: Brightness
+          .dark, // Устанавливаем цвет иконок statusBar на темный
+    ));
+
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(400), // Установка высоты AppBar
+        preferredSize: Size.fromHeight(400),
         child: AppBar(
           shape: const ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -37,7 +45,7 @@ class TherapistDetailsPage extends StatelessWidget {
               bottomRight: Radius.circular(48),
             ),
           ),
-          backgroundColor: Colors.transparent, // Удаляем цвет фона AppBar
+          backgroundColor: Colors.transparent,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -47,7 +55,7 @@ class TherapistDetailsPage extends StatelessWidget {
           flexibleSpace: Stack(
             children: [
               Image.network(
-                 'https://${getAvatarFromId(therapistId,therapistsList)}',
+                'https://${getAvatarFromId(therapistId, therapistsList)}',
                 fit: BoxFit.cover,
               ),
               Positioned(
@@ -57,15 +65,6 @@ class TherapistDetailsPage extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   color: Colors.black.withOpacity(0.5),
-                  // Цвет прозрачного фона для текста
-                  // child: Text(
-                  //   'Заголовок',
-                  //   style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontSize: 24,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
                 ),
               ),
             ],
