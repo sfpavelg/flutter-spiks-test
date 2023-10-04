@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../generated/l10n.dart';
+import 'package:flutter_spiks_test/generated/l10n.dart';
 
 class TherapistsListFilter {
   static Future<void> openFilter(BuildContext context) async {
@@ -26,22 +26,22 @@ class _TherapistsListFilter extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                   child: Text(
                     S.of(context).close,
-                    style: TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.blue),
                   ),
                 ),
                 Center(
                   child: Text(
                     S.of(context).filters,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Ваша логика сброса фильтра
+                    //  логика сброса фильтра
                   },
                   child: Text(
                     S.of(context).reset,
-                    style: TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.blue),
                   ),
                 ),
               ],

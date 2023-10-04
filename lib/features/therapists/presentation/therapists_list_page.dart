@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
+import 'package:flutter_spiks_test/core/values/icons/outline_icons.dart';
+import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapists_data.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapist_item.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapists_list_filter.dart';
 import 'package:flutter_spiks_test/generated/l10n.dart';
 import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/paginated_sliver_list.dart';
 import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pagination_status.dart';
-
-import '../../../core/values/icons/outline_icons.dart';
-import '../../../data/repositories/therapists_list_data/therapists_data.dart';
 
 /// Страница просмотра списка терапевтов
 /// @TODO реализовать
@@ -31,8 +30,8 @@ class TherapistsListPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async =>
-                await TherapistsListFilter.openFilter(context),
-            icon: Icon(OutlineIcons.settings),
+                TherapistsListFilter.openFilter(context),
+            icon: const Icon(OutlineIcons.settings),
           ),
         ],
       ),

@@ -45,7 +45,7 @@ class TherapistListItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${therapist.surname} ${therapist.name}',
+                                '${therapist.name} ${therapist.surname}',
                                 style: context.textTheme.titleLarge,
                                 maxLines: 2,
                               ),
