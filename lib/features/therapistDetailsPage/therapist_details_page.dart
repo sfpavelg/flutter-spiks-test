@@ -13,36 +13,64 @@ import 'package:flutter_spiks_test/core/values/icons/outline_icons.dart';
  */
 class TherapistDetailsPage extends StatelessWidget {
   final String? therapistId;
-  late final double appBarWidth;
 
   TherapistDetailsPage({this.therapistId, super.key});
 
+
   String? getAvatarFromId(String? id, List<Therapist> therapistsList) {
-    //Берём URL аватарки по id
-    final Therapist therapist =
-        therapistsList.firstWhere((therapist) => therapist.id == id);
-    return therapist.avatar;
+    final Therapist therapist = //Берём URL аватарки по id
+    therapistsList.firstWhere((therapist) => therapist.id == id);
+    final String? avatarUrl = therapist.avatar; // Получить URL-адрес аватара
+    return avatarUrl;
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 200, // Установка высоты AppBar
-        shape: const ContinuousRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(48),
-            bottomRight: Radius.circular(48),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(400), // Установка высоты AppBar
+        child: AppBar(
+          shape: const ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(48),
+              bottomRight: Radius.circular(48),
+            ),
+          ),
+          backgroundColor: Colors.transparent, // Удаляем цвет фона AppBar
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              context.go(AppRouter.therapistsListPath);
+            },
+          ),
+          flexibleSpace: Stack(
+            children: [
+              Image.network(
+                 'https://${getAvatarFromId(therapistId,therapistsList)}',
+                fit: BoxFit.cover,
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  color: Colors.black.withOpacity(0.5),
+                  // Цвет прозрачного фона для текста
+                  // child: Text(
+                  //   'Заголовок',
+                  //   style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontSize: 24,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                ),
+              ),
+            ],
           ),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            context.go(AppRouter.therapistsListPath);
-          },
-        ),
-        title: Image.network(
-            'https://${getAvatarFromId(therapistId, therapistsList)}'),
       ),
     );
   }
