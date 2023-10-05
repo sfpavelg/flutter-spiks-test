@@ -8,9 +8,11 @@ class Therapist {
   final String surname;
   /// avatar url
   final String? avatar;
+  /// специализация
   final String? mainSpecialization;
   /// годы опыта
   final int experience;
+  /// стоимость услуг
   final int costOfServices;
   final int costOfServicesGroup;
 

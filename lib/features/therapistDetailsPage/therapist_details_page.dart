@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
-import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapist.dart';
 import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapists_data.dart';
 import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../data/repositories/models/therapists_models/therapist_detail.dart';
+import '../../data/repositories/therapists_list_data/therapist_list_detail_data.dart';
 
 /**
  * Сраница подробной карточки терапевта
@@ -12,24 +14,36 @@ import 'package:go_router/go_router.dart';
  */
 class TherapistDetailsPage extends StatelessWidget {
   const TherapistDetailsPage({this.therapistId, super.key});
+
   final String? therapistId;
 
   /// Берём Therapist из массива по id
-  Therapist getTherapistFromDBbyId(String? id, List<Therapist> therapistsList) {
-        return therapistsList.firstWhere((therapist) => therapist.id == id);
+  // Therapist getTherapistFromDBbyId(String? id, List<Therapist> therapistsList) {
+  //   return therapistsList.firstWhere((therapist) => therapist.id == id);
+  // }
+  TherapistDetail getTherapistFromDBbyId(String? id, List<TherapistDetail> therapistsList) {
+    return therapistsList.firstWhere((therapist) => therapist.id == id);
   }
 
   @override
   Widget build(BuildContext context) {
-
     ///Извлекаем данные из Therapist, полученного по id
-    final String? avatar = getTherapistFromDBbyId(therapistId, therapistsList).avatar;
-    final String name = getTherapistFromDBbyId(therapistId, therapistsList).name;
-    final String surname = getTherapistFromDBbyId(therapistId, therapistsList).surname;
-    final String? mainSpecialization = getTherapistFromDBbyId(therapistId, therapistsList).mainSpecialization;
-    final int costOfServices = getTherapistFromDBbyId(therapistId, therapistsList).costOfServices;
-    final int costOfServicesGroup = getTherapistFromDBbyId(therapistId, therapistsList).costOfServicesGroup;
-    final int experience = getTherapistFromDBbyId(therapistId, therapistsList).experience;
+    final String? avatar =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).avatar;
+    final String name =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).name;
+    final String surname =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).surname;
+    final String? mainSpecialization =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).mainSpecialization;
+    final int costOfServices =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).costOfServices;
+    final int costOfServicesGroup =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).costOfServicesGroup;
+    final int experience =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).experience;
+    final String? biography =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).biography;
 
     ///Цвет для иконки портфеля
     Color color1 = Color(0xFFF34384); // #F34384
@@ -97,7 +111,7 @@ class TherapistDetailsPage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 15),
                   child: Container(
                     width: double.infinity,
-                    height: 400,
+                    height: 2000,
                     padding: EdgeInsets.all(20),
                     decoration: const BoxDecoration(
                       /// Белый цвет фона для контейнера с текстом
@@ -111,14 +125,17 @@ class TherapistDetailsPage extends StatelessWidget {
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center, /// Центрирование по главной оси
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          /// Центрирование по главной оси
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   '$name $surname',
-                                  style: context.textTheme.titleLarge?.copyWith(fontSize: 34),
+                                  style: context.textTheme.titleLarge
+                                      ?.copyWith(fontSize: 34),
                                 ),
                                 const SizedBox(height: 12),
                                 Container(
@@ -149,26 +166,112 @@ class TherapistDetailsPage extends StatelessWidget {
                             ),
                           ],
                         ),
+                        SizedBox(height: 30),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center, /// Центрирование по главной оси
-                          crossAxisAlignment: CrossAxisAlignment.center, /// Центрирование по поперечной оси
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Цена',
-                              style: TextStyle(fontSize: 20),
+                            SizedBox(height: 20),
+                            Container(
+                              width: 336,
+                              height: 74,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE5F6FF),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF38B7FF),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(16),
+                                          bottomLeft: Radius.circular(16),
+                                        ),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            '$costOfServices',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Индивидуальный',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(16),
+                                          bottomRight: Radius.circular(16),
+                                        ),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            '$costOfServicesGroup',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Color(0xFF006492),
+                                            ),
+                                          ),
+                                          Text(
+                                            'для пары',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF006492),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center, /// Центрирование по главной оси
-                          crossAxisAlignment: CrossAxisAlignment.center, /// Центрирование по поперечной оси
+                        SizedBox(height: 30),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start, // Выравнивание по левому краю
                           children: [
                             Text(
-                              'Описание',
+                              'Важное обо мне',
                               style: TextStyle(fontSize: 20),
                             ),
+                            SizedBox(height: 10),
+                            Text(
+                              '$biography',
+                              // 'Важное обо мне',
+                              style: TextStyle(fontSize: 16),
+                              softWrap: true, // Перенос текста на следующую строку, если не помещается
+                            ),
                           ],
-                        ),
+                        )
                       ],
                     ),
                   ),
@@ -181,4 +284,3 @@ class TherapistDetailsPage extends StatelessWidget {
     );
   }
 }
-

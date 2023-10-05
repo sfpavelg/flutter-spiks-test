@@ -73,7 +73,7 @@ class TherapistListItem extends StatelessWidget {
                             Row(
                               children: [
                                 const Icon(
-                                  Icons.business_center,
+                                   Icons.business_center,
                                   color: Color(0xFF38B7FF),
                                 ),
                                 const SizedBox(width: 4),

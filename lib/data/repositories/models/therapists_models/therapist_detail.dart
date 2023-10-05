@@ -13,6 +13,7 @@ class TherapistDetail extends Therapist {
     required super.name,
     required super.surname,
     super.avatar,
+    super.mainSpecialization,
     required super.experience,
     required super.costOfServices,
     required super.costOfServicesGroup,
