@@ -23,9 +23,7 @@ class TherapistListItem extends StatelessWidget {
             context.go('${AppRouter.therapistsListPath}/${therapist.id}'),
         highlightColor: context.scheme.primary.withOpacity(.2),
         child: Container(
-          margin: const EdgeInsets.all(
-            20,
-          ),
+          margin: const EdgeInsets.all(20),
           width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +32,7 @@ class TherapistListItem extends StatelessWidget {
                 therapist.avatar,
                 size: 56,
               ),
-              const Gap(16),
+               const Gap(16),
               Expanded(
                 child: Column(
                   children: [
@@ -50,7 +48,6 @@ class TherapistListItem extends StatelessWidget {
                                 maxLines: 2,
                               ),
                               const Gap(4),
-                              if (therapist.mainSpecialization != null)
                                 Text(
                                   therapist.mainSpecialization!,
                                   style: context.textTheme.bodySmall,
@@ -85,12 +82,12 @@ class TherapistListItem extends StatelessWidget {
                                   maxLines: 1,
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                         Column(
                           children: [
-                            Text(
+                            Text( ///Отедяем пробелом последние 3 цифры, если число черырёхзначное
                               '${therapist.costOfServices.toString().replaceAllMapped(
                                 RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                     (Match m) => '${m[1]} ',

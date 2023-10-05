@@ -1,8 +1,6 @@
-import 'therapist.dart';
+import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapist.dart';
 
-/**
- * Расширенная модель терапевта (Therapist)
- **/
+/// Расширенная модель терапевта (Therapist)
 
 class TherapistDetail extends Therapist {
   final String? workPrinciples;
@@ -17,6 +15,7 @@ class TherapistDetail extends Therapist {
     super.avatar,
     required super.experience,
     required super.costOfServices,
+    required super.costOfServicesGroup,
     required this.workPrinciples,
     required this.biography,
     required this.videoPresentationUrl,
