@@ -18,10 +18,10 @@ class _TherapistsListFilter extends StatefulWidget {
 }
 
 class _TherapistsListFilterState extends State<_TherapistsListFilter> {
-  double _startValue = 20; /// начальное значение для ползунка
-  double _endValue = 60; /// конечное значение для ползунка
-  int min = 0;       ///минимальная начальная цена услуг
-  int max = 2500;    ///максимальная начальная цена услуг
+  double _startValue = 18; /// начальное значение для ползунка
+  double _endValue = 70; /// конечное значение для ползунка
+  int min = 0;         ///минимальная начальная цена услуг
+  int max = 100000;    ///максимальная начальная цена услуг
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     setState(() {
                       _startValue = 18;
                       _endValue = 70;
-                      int min = 0;
-                      int max = 100000;
+                      min = 0;
+                      max = 100000;
                     });
                   },
                   child: Text(
@@ -165,6 +165,44 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     'Более 5 000 ₽̶',
                     style: TextStyle(
                       color: min == 5000 && max == 100000
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      min = 0;
+                      max = 100000;
+                    });
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        if (min == 0 && max == 100000) {
+                          return const Color(0xFF38B7FF);
+                        }
+                        return const Color(0xFFE5F6FF);
+                      },
+                    ),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                  ),
+
+                  child: Text(
+                    'Весь диапазон цен',
+                    style: TextStyle(
+                      color: min == 0 && max == 100000
                           ? Colors.white
                           : Colors.black,
                     ),
