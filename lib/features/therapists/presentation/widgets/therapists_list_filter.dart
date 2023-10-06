@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spiks_test/generated/l10n.dart';
 
 class TherapistsListFilter {
-  static Future<void> openFilter(BuildContext context) async {
+    static Future<void> openFilter(BuildContext context) async {
     await Navigator.of(context).push(
       MaterialPageRoute(builder: (BuildContext context) {
         return _TherapistsListFilter();
@@ -18,10 +18,10 @@ class _TherapistsListFilter extends StatefulWidget {
 }
 
 class _TherapistsListFilterState extends State<_TherapistsListFilter> {
-  double _startValue = 18; /// начальное значение для ползунка
-  double _endValue = 70; /// конечное значение для ползунка
-  int min = 0;         ///минимальная начальная цена услуг
-  int max = 100000;    ///максимальная начальная цена услуг
+  int _startAge = 18; /// начальное значение для ползунка
+  int _endAge = 70; /// конечное значение для ползунка
+  int _minCostOfServices = 0;         ///минимальная начальная цена услуг
+  int _maxCostOfServices = 100000;    ///максимальная начальная цена услуг
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +52,10 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   onPressed: () {
                     ///  логика сброса фильтра
                     setState(() {
-                      _startValue = 18;
-                      _endValue = 70;
-                      min = 0;
-                      max = 100000;
+                      _startAge = 18;
+                      _endAge = 70;
+                      _minCostOfServices = 0;
+                      _maxCostOfServices = 100000;
                     });
                   },
                   child: Text(
@@ -78,14 +78,14 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      min = 0;
-                      max = 2500;
+                      _minCostOfServices = 0;
+                      _maxCostOfServices = 2500;
                     });
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (min == 0 && max == 2500) {
+                        if (_minCostOfServices == 0 && _maxCostOfServices == 2500) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -101,7 +101,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     'До 2 500 ₽̶',
                     style: TextStyle(
                       color:
-                          min == 0 && max == 2500 ? Colors.white : Colors.black,
+                          _minCostOfServices == 0 && _maxCostOfServices == 2500 ? Colors.white : Colors.black,
                     ),
                   ),
                 ),
@@ -109,14 +109,14 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      min = 2500;
-                      max = 5000;
+                      _minCostOfServices = 2500;
+                      _maxCostOfServices = 5000;
                     });
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (min == 2500 && max == 5000) {
+                        if (_minCostOfServices == 2500 && _maxCostOfServices == 5000) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -132,7 +132,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   child: Text(
                     '2 500 - 5 000 ₽̶',
                     style: TextStyle(
-                      color: min == 2500 && max == 5000
+                      color: _minCostOfServices == 2500 && _maxCostOfServices == 5000
                           ? Colors.white
                           : Colors.black,
                     ),
@@ -142,14 +142,14 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      min = 5000;
-                      max = 100000;
+                      _minCostOfServices = 5000;
+                      _maxCostOfServices = 100000;
                     });
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (min == 5000 && max == 100000) {
+                        if (_minCostOfServices == 5000 && _maxCostOfServices == 100000) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -164,7 +164,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   child: Text(
                     'Более 5 000 ₽̶',
                     style: TextStyle(
-                      color: min == 5000 && max == 100000
+                      color: _minCostOfServices == 5000 && _maxCostOfServices == 100000
                           ? Colors.white
                           : Colors.black,
                     ),
@@ -179,14 +179,14 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      min = 0;
-                      max = 100000;
+                      _minCostOfServices = 0;
+                      _maxCostOfServices = 100000;
                     });
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
-                        if (min == 0 && max == 100000) {
+                        if (_minCostOfServices == 0 && _maxCostOfServices == 100000) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -202,7 +202,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   child: Text(
                     'Весь диапазон цен',
                     style: TextStyle(
-                      color: min == 0 && max == 100000
+                      color: _minCostOfServices == 0 && _maxCostOfServices == 100000
                           ? Colors.white
                           : Colors.black,
                     ),
@@ -223,20 +223,20 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: Text(
-                      '${_startValue.round()}',
+                      '${_startAge.round()}',
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
                   Expanded(
                     child: RangeSlider(
-                      values: RangeValues(_startValue, _endValue),
+                      values: RangeValues(_startAge.toDouble(), _endAge.toDouble()),
                       min: 18,
                       max: 70,
                       divisions: 52,
                       onChanged: (RangeValues values) {
                         setState(() {
-                          _startValue = values.start;
-                          _endValue = values.end;
+                          _startAge = values.start.round();
+                          _endAge = values.end.round();
                         });
                       },
                     ),
@@ -244,7 +244,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(
-                      '${_endValue.round()}',
+                      '${_endAge.round()}',
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),

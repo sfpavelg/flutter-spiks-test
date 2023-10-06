@@ -12,9 +12,25 @@ class TherapistListItem extends StatelessWidget {
 
   final TherapistDetail therapist;
   final int? discount;
+  // int startAge;
+  // int endAge;
+  // int minCostOfServices;
+  // int maxCostOfServices;
+  // void setStartAge(int startAge){
+  //   this.startAge = startAge;
+  // }
+
 
   @override
   Widget build(BuildContext context) {
+    // // Проверяем, находится ли age в диапазоне _startAge и _endAge
+    // final bool isAgeInRange = therapist.age >= startAge && therapist.age <= endAge;
+    //
+    // // Проверяем, находится ли costOfServices в диапазоне _minCostOfServices и _maxCostOfServices
+    // final bool isCostInRange = therapist.costOfServices >= minCostOfServices && therapist.costOfServices <= maxCostOfServices;
+
+
+
     return Padding(
       padding: const EdgeInsets.all(4),
       child: InkWell(

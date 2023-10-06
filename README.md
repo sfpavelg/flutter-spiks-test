@@ -21,6 +21,12 @@ flutter pub run intl_utils:generate
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
+Для постоянной генерации при изменениях в отслеживаемых файлах, 
+необходимо запустить команду
+```shell
+dart run build_runner watch -d
+```
+
 ## TODO
 
 ### Что нужно сделать:
