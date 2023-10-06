@@ -1,4 +1,5 @@
 {
+ "@@locale": "ru",
  "full_name_creator": "Замените!!! Полное имя создателя",
  "btn_go_to_home_page": "Перейти на главную страницу",
  "load_failed": "Ошибка загрузки",
@@ -33,6 +34,6 @@
  "session_cost": "Стоимость сессии",
  "up_to_2500R": "До 2 500 ₽̶",
  "more_than_5000R": "Более 5 000 ₽̶",
- "psychologist's_age": "Возраст Психолога",
+ "psychologists_age": "Возраст Психолога",
  "show_psychologists": "Показать Психологов"
 }

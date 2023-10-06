@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("More than 5000 ₽̶"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "psychologists_age":
+            MessageLookupByLibrary.simpleMessage("Psychologist\'s Age"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
         "session_cost": MessageLookupByLibrary.simpleMessage("Session_cost"),

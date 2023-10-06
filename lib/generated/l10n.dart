@@ -390,7 +390,15 @@ class S {
     );
   }
 
-  // skipped getter for the 'psychologist\'s_age' key
+  /// `Psychologist's Age`
+  String get psychologists_age {
+    return Intl.message(
+      'Psychologist\'s Age',
+      name: 'psychologists_age',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Show Psychologists`
   String get show_psychologists {

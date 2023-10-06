@@ -1,4 +1,6 @@
+
 {
+ "@@locale": "en",
  "full_name_creator": "REPLACE!!! Full name creator",
  "btn_go_to_home_page": "go to home page",
  "load_failed": "Load failed",
@@ -33,6 +35,6 @@
  "session_cost": "Session_cost",
  "up_to_2500R": "Up to 2500 ₽̶",
  "more_than_5000R": "More than 5000 ₽̶",
- "psychologist's_age": "Psychologist's Age",
+ "psychologists_age": "Psychologist's Age",
  "show_psychologists": "Show Psychologists"
 }
