@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
-import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapists_data.dart';
+import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapist_detail.dart';
+import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapist_list_detail_data.dart';
 import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../data/repositories/models/therapists_models/therapist_detail.dart';
-import '../../data/repositories/therapists_list_data/therapist_list_detail_data.dart';
 
 /**
  * Сраница подробной карточки терапевта
@@ -17,10 +15,7 @@ class TherapistDetailsPage extends StatelessWidget {
 
   final String? therapistId;
 
-  /// Берём Therapist из массива по id
-  // Therapist getTherapistFromDBbyId(String? id, List<Therapist> therapistsList) {
-  //   return therapistsList.firstWhere((therapist) => therapist.id == id);
-  // }
+  /// Берём  TherapistDetail из массива по therapistId
   TherapistDetail getTherapistFromDBbyId(String? id, List<TherapistDetail> therapistsList) {
     return therapistsList.firstWhere((therapist) => therapist.id == id);
   }
@@ -46,9 +41,9 @@ class TherapistDetailsPage extends StatelessWidget {
         getTherapistFromDBbyId(therapistId, therapistsListDetail).biography;
 
     ///Цвет для иконки портфеля
-    Color color1 = Color(0xFFF34384); // #F34384
-    Color color2 = Color(0xFF4510DB); // #4510DB
-    Color? blendedColor = Color.lerp(color1, color2, 0.5); // 50% blend
+    const Color color1 = Color(0xFFF34384); // #F34384
+    const Color color2 = Color(0xFF4510DB); // #4510DB
+    final Color? blendedColor = Color.lerp(color1, color2, 0.5); // 50% blend
 
     ///Делаем StatusBar прозрачным
     SystemChrome.setSystemUIOverlayStyle(
@@ -67,12 +62,12 @@ class TherapistDetailsPage extends StatelessWidget {
           onTap: () {
             context.go(AppRouter.therapistsListPath);
           },
-          child: Container(
-            decoration: const BoxDecoration(
+          child: const DecoratedBox(
+            decoration: BoxDecoration(
               color: Colors.grey,
               shape: BoxShape.circle,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.arrow_back,
               color: Colors.white,
             ),
@@ -82,7 +77,7 @@ class TherapistDetailsPage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Color(0xFFE5F6FF),
+            color: const Color(0xFFE5F6FF),
           ),
           SingleChildScrollView(
             child: Column(
@@ -108,16 +103,14 @@ class TherapistDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 15),
+                  padding: const EdgeInsets.only(top: 15),
                   child: Container(
                     width: double.infinity,
                     height: 2000,
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     decoration: const BoxDecoration(
-                      /// Белый цвет фона для контейнера с текстом
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                        /// Закругление верхних углов
                         topLeft: Radius.circular(48),
                         topRight: Radius.circular(48),
                       ),
@@ -126,8 +119,6 @@ class TherapistDetailsPage extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-
-                          /// Центрирование по главной оси
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -138,11 +129,11 @@ class TherapistDetailsPage extends StatelessWidget {
                                       ?.copyWith(fontSize: 34),
                                 ),
                                 const SizedBox(height: 12),
-                                Container(
+                                SizedBox(
                                   width: 371,
                                   child: Text(
                                     '$mainSpecialization',
-                                    style: TextStyle(fontSize: 16),
+                                    style: const TextStyle(fontSize: 16),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
@@ -166,45 +157,50 @@ class TherapistDetailsPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Container(
                               width: 336,
                               height: 74,
                               decoration: BoxDecoration(
-                                color: Color(0xFFE5F6FF),
+                                color: const Color(0xFFE5F6FF),
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: Row(
                                 children: [
                                   Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
+                                    child: DecoratedBox(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFF38B7FF),
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(16),
                                           bottomLeft: Radius.circular(16),
+                                          topRight: Radius.circular(16),
+                                          bottomRight: Radius.circular(16),
                                         ),
                                       ),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        // crossAxisAlignment:
+                                        //     CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '$costOfServices',
+                                            '${costOfServices.toString().replaceAllMapped(
+                                              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                                  (Match m) => '${m[1]} ',
+                                            )} ₽̶ /час',
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.white,
                                             ),
                                           ),
-                                          Text(
-                                            'Индивидуальный',
+                                          const Text(
+                                            'Индивидуальная',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 14,
@@ -216,9 +212,9 @@ class TherapistDetailsPage extends StatelessWidget {
                                     ),
                                   ),
                                   Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
+                                    child: DecoratedBox(
+                                      decoration: const BoxDecoration(
+                                        color: Color(0x00000000),
                                         borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(16),
                                           bottomRight: Radius.circular(16),
@@ -227,18 +223,21 @@ class TherapistDetailsPage extends StatelessWidget {
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        // crossAxisAlignment:
+                                        //     CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '$costOfServicesGroup',
+                                            '${costOfServicesGroup.toString().replaceAllMapped(
+                                              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                                  (Match m) => '${m[1]} ',
+                                            )} ₽̶ /час',
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18,
                                               color: Color(0xFF006492),
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             'для пары',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
@@ -255,23 +254,22 @@ class TherapistDetailsPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start, // Выравнивание по левому краю
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Важное обо мне',
                               style: TextStyle(fontSize: 20),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               '$biography',
-                              // 'Важное обо мне',
-                              style: TextStyle(fontSize: 16),
-                              softWrap: true, // Перенос текста на следующую строку, если не помещается
+                              style: const TextStyle(fontSize: 16),
+                              softWrap: true, /// Перенос текста
                             ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
