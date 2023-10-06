@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 class TherapistListItem extends StatelessWidget {
   const TherapistListItem({required this.therapist, this.discount, super.key});
 
-  final Therapist therapist;
+  final TherapistDetail therapist;
   final int? discount;
 
   @override
@@ -54,6 +54,10 @@ class TherapistListItem extends StatelessWidget {
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
+                              const Gap(4),
+                              Text(
+                                'Возраст - ${therapist.age} лет',
+                              ),
                             ],
                           ),
                         ),
@@ -64,7 +68,9 @@ class TherapistListItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
+
+                    const SizedBox(height: 4),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

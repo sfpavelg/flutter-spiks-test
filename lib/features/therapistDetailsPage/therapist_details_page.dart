@@ -37,6 +37,8 @@ class TherapistDetailsPage extends StatelessWidget {
         getTherapistFromDBbyId(therapistId, therapistsListDetail).experience;
     final String? biography =
         getTherapistFromDBbyId(therapistId, therapistsListDetail).biography;
+    final int age =
+        getTherapistFromDBbyId(therapistId, therapistsListDetail).age;
 
     ///Цвет для иконки портфеля
     const Color color1 = Color(0xFFF34384); // #F34384
@@ -136,6 +138,12 @@ class TherapistDetailsPage extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                   ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Возраст - $age лет',
+                                  style: context.textTheme.titleLarge
+                                      ?.copyWith(fontSize: 16),
                                 ),
                                 const SizedBox(height: 4),
                                 Row(

@@ -6,6 +6,7 @@ class Therapist {
   final String id;
   final String name;
   final String surname;
+  final int age;
   /// avatar url
   final String? avatar;
   /// специализация
@@ -20,6 +21,7 @@ class Therapist {
     required this.id,
     required this.name,
     required this.surname,
+    required this.age,
     required this.experience,
     required this.costOfServices,
     required this.costOfServicesGroup,
