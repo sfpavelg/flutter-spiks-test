@@ -23,7 +23,7 @@ class TherapistListItem extends StatelessWidget {
             context.go('${AppRouter.therapistsListPath}/${therapist.id}'),
         highlightColor: context.scheme.primary.withOpacity(.2),
         child: Container(
-          margin: const EdgeInsets.all(20),
+          margin: const EdgeInsets.all(30),
           width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

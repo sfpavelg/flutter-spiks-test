@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
 import 'package:flutter_spiks_test/core/values/icons/outline_icons.dart';
-import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapists_data.dart';
+import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapist_list_detail_data.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapist_item.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapists_list_filter.dart';
@@ -21,7 +21,7 @@ class TherapistsListPage extends StatelessWidget {
         title: Text(S.of(context).therapists),
         automaticallyImplyLeading: false,
         shape: const ContinuousRectangleBorder(
-          //Закругляем края
+          ///Закругляем края
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(48),
             bottomRight: Radius.circular(48),
@@ -40,14 +40,14 @@ class TherapistsListPage extends StatelessWidget {
           PaginatedSliverList(
             paginationStatus: PaginationStatus.lastPage,
             builder: (context, index) => TherapistListItem(
-              therapist: therapistsList[index],
+              therapist: therapistsListDetail[index],
             ),
-            childCount: therapistsList.length,
+            childCount: therapistsListDetail.length,
             separatorBuilder: (
               BuildContext context,
               int index,
             ) =>
-                const Divider(height: 0),
+                const Divider(height: 1),
           ),
         ],
       ),

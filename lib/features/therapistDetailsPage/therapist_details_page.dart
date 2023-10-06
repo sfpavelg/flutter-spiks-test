@@ -6,10 +6,8 @@ import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therap
 import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:go_router/go_router.dart';
 
-/**
- * Сраница подробной карточки терапевта
- * @TODO реализовать
- */
+/// Сраница подробной карточки терапевта
+/// @TODO реализовать
 class TherapistDetailsPage extends StatelessWidget {
   const TherapistDetailsPage({this.therapistId, super.key});
 
@@ -22,7 +20,7 @@ class TherapistDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ///Извлекаем данные из Therapist, полученного по id
+    ///Извлекаем данные из Therapist, полученного по therapistId
     final String? avatar =
         getTherapistFromDBbyId(therapistId, therapistsListDetail).avatar;
     final String name =

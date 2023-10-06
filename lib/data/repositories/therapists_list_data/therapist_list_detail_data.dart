@@ -34,7 +34,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '3',
+    id: '2',
     name: 'Крисс',
     surname: 'Эванс',
     experience: 11,
@@ -66,7 +66,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '4',
+    id: '3',
     name: 'Девид',
     surname: 'Холс',
     experience: 9,
@@ -99,7 +99,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '5',
+    id: '4',
     name: 'Дональд',
     surname: 'Девис',
     experience: 7,
@@ -132,7 +132,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '6',
+    id: '5',
     name: 'Жеймс',
     surname: 'Жонсон',
     experience: 12,
@@ -165,7 +165,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '7',
+    id: '6',
     name: 'Патрик',
     surname: 'Лоуренс',
     experience: 15,
@@ -197,7 +197,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '8',
+    id: '7',
     name: 'Жефри',
     surname: 'Перес',
     experience: 10,
@@ -229,7 +229,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '9',
+    id: '8',
     name: 'Синтия',
     surname: 'Лоу',
     experience: 11,
@@ -262,7 +262,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '10',
+    id: '9',
     name: 'Мэри',
     surname: 'Кеннеди',
     experience: 7,
@@ -294,7 +294,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '11',
+    id: '10',
     name: 'Гвендолин',
     surname: 'Роберсон',
     experience: 8,
@@ -326,7 +326,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '12',
+    id: '11',
     name: 'Наоми',
     surname: 'Женкинс',
     experience: 9,
@@ -358,7 +358,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '13',
+    id: '12',
     name: 'Диана',
     surname: 'Андерсон',
     experience: 11,
@@ -422,7 +422,7 @@ final List<TherapistDetail> therapistsListDetail = [
         'я готов предоставить свои услуги. Буду рад обсудить возможность сотрудничества!',
   ),
   TherapistDetail(
-    id: '2',
+    id: '14',
     name: 'Лена',
     surname: 'Хинди',
     experience: 7,
