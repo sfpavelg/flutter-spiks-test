@@ -8,29 +8,35 @@ import 'package:flutter_spiks_test/widgets/widgets/rounded_avatar.dart';
 import 'package:go_router/go_router.dart';
 
 class TherapistListItem extends StatelessWidget {
-  const TherapistListItem({required this.therapist, this.discount, super.key});
+  const TherapistListItem({
+    required this.therapist,
+    required this.startAge,
+    required this.endAge,
+    required this.minCostOfServices,
+    required this.maxCostOfServices,
+    super.key,
+  });
 
   final TherapistDetail therapist;
-  final int? discount;
-  // int startAge;
-  // int endAge;
-  // int minCostOfServices;
-  // int maxCostOfServices;
-  // void setStartAge(int startAge){
-  //   this.startAge = startAge;
-  // }
-
+  final int? startAge;
+  final int? endAge;
+  final int? minCostOfServices;
+  final int? maxCostOfServices;
 
   @override
   Widget build(BuildContext context) {
-    // // Проверяем, находится ли age в диапазоне _startAge и _endAge
-    // final bool isAgeInRange = therapist.age >= startAge && therapist.age <= endAge;
-    //
-    // // Проверяем, находится ли costOfServices в диапазоне _minCostOfServices и _maxCostOfServices
-    // final bool isCostInRange = therapist.costOfServices >= minCostOfServices && therapist.costOfServices <= maxCostOfServices;
+    /// Проверяем, находится ли age в диапазоне _startAge и _endAge
+    final bool isAgeInRange = therapist.age >= startAge! &&
+        therapist.age <= endAge!;
 
-
-
+    /// Проверяем, находится ли costOfServices в диапазоне _minCostOfServices и
+    /// _maxCostOfServices
+    final bool isCostInRange = therapist.costOfServices >= minCostOfServices!
+        && therapist.costOfServices <= maxCostOfServices!;
+    /// если ограничения не соответствуют, возвращаем пустой контейнер
+    if (!isAgeInRange || !isCostInRange) {
+      return Container();
+    }
     return Padding(
       padding: const EdgeInsets.all(4),
       child: InkWell(

@@ -40,7 +40,8 @@ class TherapistsListPage extends StatelessWidget {
           PaginatedSliverList(
             paginationStatus: PaginationStatus.lastPage,
             builder: (context, index) => TherapistListItem(
-              therapist: therapistsListDetail[index],
+              therapist: therapistsListDetail[index], startAge: 0,
+              endAge: 100, minCostOfServices: 0, maxCostOfServices: 5000,
             ),
             childCount: therapistsListDetail.length,
             separatorBuilder: (
