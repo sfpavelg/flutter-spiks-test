@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
+import 'package:flutter_spiks_test/features/therapists/block/therapists_event.dart';
 
 import 'package:flutter_spiks_test/generated/l10n.dart';
+import 'package:flutter_spiks_test/router/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class TherapistsListFilter {
-    static Future<void> openFilter(BuildContext context) async {
+  static Future<void> openFilter(BuildContext context,
+      TherapistsBloc therapistsBloc,) async {
     await Navigator.of(context).push(
       MaterialPageRoute(builder: (BuildContext context) {
-        return _TherapistsListFilter();
+        return _TherapistsListFilter(therapistsBloc: therapistsBloc);
       },),
     );
   }
 }
 
 class _TherapistsListFilter extends StatefulWidget {
+  final TherapistsBloc therapistsBloc;
+  _TherapistsListFilter({required this.therapistsBloc});
   @override
-  _TherapistsListFilterState createState() => _TherapistsListFilterState();
+  _TherapistsListFilterState createState() =>
+      _TherapistsListFilterState(therapistsBloc: therapistsBloc);
 }
 
 class _TherapistsListFilterState extends State<_TherapistsListFilter> {
+  final TherapistsBloc therapistsBloc;
+  _TherapistsListFilterState({required this.therapistsBloc});
   int _startAge = 18; /// начальное значение для ползунка
   int _endAge = 70; /// конечное значение для ползунка
   int _minCostOfServices = 0;         ///минимальная начальная цена услуг
@@ -25,6 +36,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
 
   @override
   Widget build(BuildContext context) {
+    // final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -261,6 +273,14 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
         child: ElevatedButton(
           onPressed: () {
             // Действия
+            print('Значение переменной _startAge: $_startAge '
+                '\nЗначение переменной _endAge: $_endAge '
+                '\nЗначение переменной _minCostOfServices: $_minCostOfServices '
+                '\nЗначение переменной _maxCostOfServices: $_maxCostOfServices '
+            );
+            therapistsBloc.add(AgeAndCostFilterEvent(_startAge , _endAge,
+              _minCostOfServices, _maxCostOfServices,),);
+            context.push(AppRouter.therapistsListPath);
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color>(

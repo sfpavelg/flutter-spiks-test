@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
 import 'package:flutter_spiks_test/core/values/icons/outline_icons.dart';
 import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapists_models.dart';
+import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
 import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:flutter_spiks_test/widgets/gap/widgets/gap.dart';
 import 'package:flutter_spiks_test/widgets/widgets/rounded_avatar.dart';
@@ -25,6 +27,8 @@ class TherapistListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
+
     /// Проверяем, находится ли age в диапазоне _startAge и _endAge
     final bool isAgeInRange = therapist.age >= startAge! &&
         therapist.age <= endAge!;

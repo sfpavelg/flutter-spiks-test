@@ -1,11 +1,16 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spiks_test/features/app/view/app_director.dart';
+import 'package:flutter_spiks_test/features/intro/intro_page.dart';
 import 'package:flutter_spiks_test/features/setting/setting_page.dart';
 import 'package:flutter_spiks_test/features/therapistDetailsPage/therapist_details_page.dart';
+import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/therapists_list_page.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
   AppRouter._();
+  // final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
+  final therapistsBloc = TherapistsBloc();
 
   static const String appDirector = 'appDirector';
   static const String appDirectorPath = '/';
@@ -42,7 +47,8 @@ class AppRouter {
       GoRoute(
         name: therapistsListNamed,
         path: therapistsListPath,
-        builder: (context, state) => const TherapistsListPage(),
+        builder: (context, state) =>
+            TherapistsListPage(therapistsBloc: TherapistsBloc()),
       ),
       GoRoute(
         name: therapistDetailsNamed,

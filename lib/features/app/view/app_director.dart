@@ -10,7 +10,7 @@ class AppDirector extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
-        return const IntroPage();
+        return IntroPage();
       },
     );
   }

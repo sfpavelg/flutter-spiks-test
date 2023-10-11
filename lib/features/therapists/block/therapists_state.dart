@@ -1,8 +1,10 @@
-// part of 'therapists_bloc.dart';
-//
-// @Freezed()
-// class TherapistsState with _$TherapistsState {
-//   const factory TherapistsState({
-//     @Default(18) int startAge,
-//   }) = _TherapistsState;
-// }
+
+class TherapistsState  {
+    TherapistsState(this.startAge, this.endAge, this.minCostOfServices,
+      this.maxCostOfServices,);
+
+  late final int? startAge;
+  late final int? endAge;
+  late final int? minCostOfServices;
+  late final int? maxCostOfServices;
+}

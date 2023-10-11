@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
 import 'package:flutter_spiks_test/core/values/icons/outline_icons.dart';
 import 'package:flutter_spiks_test/data/repositories/therapists_list_data/therapist_list_detail_data.dart';
+import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
+import 'package:flutter_spiks_test/features/therapists/block/therapists_state.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapist_item.dart';
 import 'package:flutter_spiks_test/features/therapists/presentation/widgets/therapists_list_filter.dart';
@@ -12,7 +15,10 @@ import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pa
 /// Страница просмотра списка терапевтов
 /// @TODO реализовать
 class TherapistsListPage extends StatelessWidget {
-  const TherapistsListPage({super.key});
+  TherapistsListPage({required this.therapistsBloc, super.key});
+
+  // final TherapistsBloc therapistsBloc = TherapistsBloc();
+  final TherapistsBloc therapistsBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -29,28 +35,39 @@ class TherapistsListPage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () async =>
-                TherapistsListFilter.openFilter(context),
+            onPressed: () async => TherapistsListFilter.openFilter(context,
+                therapistsBloc),
             icon: const Icon(OutlineIcons.settings),
           ),
         ],
       ),
-      body: CustomScrollView(
-        slivers: [
-          PaginatedSliverList(
-            paginationStatus: PaginationStatus.lastPage,
-            builder: (context, index) => TherapistListItem(
-              therapist: therapistsListDetail[index], startAge: 0,
-              endAge: 100, minCostOfServices: 0, maxCostOfServices: 5000,
+      body: BlocProvider(
+        create: (context) => therapistsBloc,
+        child: CustomScrollView(
+          slivers: [
+            BlocBuilder<TherapistsBloc, TherapistsState>(
+              bloc: therapistsBloc,
+              builder: (context, state) {
+                return PaginatedSliverList(
+                  paginationStatus: PaginationStatus.lastPage,
+                  builder: (context, index) => TherapistListItem(
+                    therapist: therapistsListDetail[index],
+                    startAge: state.startAge,
+                    endAge: state.endAge,
+                    minCostOfServices: state.minCostOfServices,
+                    maxCostOfServices: state.maxCostOfServices,
+                  ),
+                  childCount: therapistsListDetail.length,
+                  separatorBuilder: (
+                    BuildContext context,
+                    int index,
+                  ) =>
+                      const Divider(height: 1),
+                );
+              },
             ),
-            childCount: therapistsListDetail.length,
-            separatorBuilder: (
-              BuildContext context,
-              int index,
-            ) =>
-                const Divider(height: 1),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
