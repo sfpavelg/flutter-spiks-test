@@ -15,10 +15,11 @@ import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pa
 /// Страница просмотра списка терапевтов
 /// @TODO реализовать
 class TherapistsListPage extends StatelessWidget {
-  TherapistsListPage({required this.therapistsBloc, super.key});
+  // TherapistsListPage({required this.therapistsBloc, super.key});
+  TherapistsListPage({super.key});
 
-  // final TherapistsBloc therapistsBloc = TherapistsBloc();
-  final TherapistsBloc therapistsBloc;
+  final TherapistsBloc therapistsBloc = TherapistsBloc();
+  //final TherapistsBloc therapistsBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class TherapistsListPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async => TherapistsListFilter.openFilter(context,
-                therapistsBloc),
+                therapistsBloc,),
             icon: const Icon(OutlineIcons.settings),
           ),
         ],
@@ -48,6 +49,7 @@ class TherapistsListPage extends StatelessWidget {
             BlocBuilder<TherapistsBloc, TherapistsState>(
               bloc: therapistsBloc,
               builder: (context, state) {
+                print( 'Значение эвента: ${state.startAge}');
                 return PaginatedSliverList(
                   paginationStatus: PaginationStatus.lastPage,
                   builder: (context, index) => TherapistListItem(

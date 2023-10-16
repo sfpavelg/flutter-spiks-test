@@ -27,7 +27,6 @@ class TherapistListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
 
     /// Проверяем, находится ли age в диапазоне _startAge и _endAge
     final bool isAgeInRange = therapist.age >= startAge! &&

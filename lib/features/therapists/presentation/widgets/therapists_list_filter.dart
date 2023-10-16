@@ -36,7 +36,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
 
   @override
   Widget build(BuildContext context) {
-    // final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
+     //final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -280,7 +280,9 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
             );
             therapistsBloc.add(AgeAndCostFilterEvent(_startAge , _endAge,
               _minCostOfServices, _maxCostOfServices,),);
-            context.push(AppRouter.therapistsListPath);
+            //context.push(AppRouter.therapistsListPath);
+            //print( 'Значение эвента: ${state.startAge}');
+            context.pop();
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color>(

@@ -1,17 +1,17 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spiks_test/configs/app_config.dart';
 import 'package:flutter_spiks_test/core/bloc_core/ui_status.dart';
 import 'package:flutter_spiks_test/generated/l10n.dart';
 import 'package:flutter_spiks_test/services/app_service/app_service.dart';
 import 'package:flutter_spiks_test/services/log_service/log_service.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'app_bloc.freezed.dart';
 part 'app_event.dart';
 part 'app_state.dart';
-part 'app_bloc.freezed.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({

@@ -48,7 +48,7 @@ class AppRouter {
         name: therapistsListNamed,
         path: therapistsListPath,
         builder: (context, state) =>
-            TherapistsListPage(therapistsBloc: TherapistsBloc()),
+            TherapistsListPage(),
       ),
       GoRoute(
         name: therapistDetailsNamed,
