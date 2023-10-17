@@ -15,11 +15,8 @@ import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pa
 /// Страница просмотра списка терапевтов
 /// @TODO реализовать
 class TherapistsListPage extends StatelessWidget {
-  // TherapistsListPage({required this.therapistsBloc, super.key});
   TherapistsListPage({super.key});
-
-  final TherapistsBloc therapistsBloc = TherapistsBloc();
-  //final TherapistsBloc therapistsBloc;
+  TherapistsBloc therapistsBloc = TherapistsBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -42,34 +39,27 @@ class TherapistsListPage extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocProvider(
-        create: (context) => therapistsBloc,
-        child: CustomScrollView(
-          slivers: [
-            BlocBuilder<TherapistsBloc, TherapistsState>(
-              bloc: therapistsBloc,
-              builder: (context, state) {
-                print( 'Значение эвента: ${state.startAge}');
-                return PaginatedSliverList(
-                  paginationStatus: PaginationStatus.lastPage,
-                  builder: (context, index) => TherapistListItem(
-                    therapist: therapistsListDetail[index],
-                    startAge: state.startAge,
-                    endAge: state.endAge,
-                    minCostOfServices: state.minCostOfServices,
-                    maxCostOfServices: state.maxCostOfServices,
-                  ),
-                  childCount: therapistsListDetail.length,
-                  separatorBuilder: (
-                    BuildContext context,
-                    int index,
-                  ) =>
-                      const Divider(height: 1),
-                );
-              },
-            ),
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          StreamBuilder<TherapistsState>(
+            stream: therapistsBloc.outputStateStream,
+            initialData: TherapistsState(0, 100, 0, 100000),
+            builder: (context, snapshot) {
+              return PaginatedSliverList(
+                paginationStatus: PaginationStatus.lastPage,
+                builder: (context, index) => TherapistListItem(
+                  therapist: therapistsListDetail[index],
+                  startAge: snapshot.data!.startAge,
+                  endAge: snapshot.data!.endAge,
+                  minCostOfServices: snapshot.data!.minCostOfServices,
+                  maxCostOfServices: snapshot.data!.maxCostOfServices,
+                ),
+                childCount: therapistsListDetail.length,
+                separatorBuilder: (BuildContext context, int index) => const Divider(height: 1),
+              );
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

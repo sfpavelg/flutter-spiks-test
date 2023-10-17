@@ -278,8 +278,10 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 '\nЗначение переменной _minCostOfServices: $_minCostOfServices '
                 '\nЗначение переменной _maxCostOfServices: $_maxCostOfServices '
             );
-            therapistsBloc.add(AgeAndCostFilterEvent(_startAge , _endAge,
-              _minCostOfServices, _maxCostOfServices,),);
+            therapistsBloc.inputEventSinc.add(TherapistsEvent(_startAge,
+              _endAge, _minCostOfServices, _maxCostOfServices,));
+            // therapistsBloc.add(AgeAndCostFilterEvent(_startAge , _endAge,
+            //   _minCostOfServices, _maxCostOfServices,),);
             //context.push(AppRouter.therapistsListPath);
             //print( 'Значение эвента: ${state.startAge}');
             context.pop();
