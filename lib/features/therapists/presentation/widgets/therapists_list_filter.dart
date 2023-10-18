@@ -8,19 +8,25 @@ import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:go_router/go_router.dart';
 
 class TherapistsListFilter {
-  static Future<void> openFilter(BuildContext context,
-      TherapistsBloc therapistsBloc,) async {
+  static Future<void> openFilter(
+    BuildContext context,
+    TherapistsBloc therapistsBloc,
+  ) async {
     await Navigator.of(context).push(
-      MaterialPageRoute(builder: (BuildContext context) {
-        return _TherapistsListFilter(therapistsBloc: therapistsBloc);
-      },),
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return _TherapistsListFilter(therapistsBloc: therapistsBloc);
+        },
+      ),
     );
   }
 }
 
 class _TherapistsListFilter extends StatefulWidget {
   final TherapistsBloc therapistsBloc;
+
   _TherapistsListFilter({required this.therapistsBloc});
+
   @override
   _TherapistsListFilterState createState() =>
       _TherapistsListFilterState(therapistsBloc: therapistsBloc);
@@ -28,15 +34,25 @@ class _TherapistsListFilter extends StatefulWidget {
 
 class _TherapistsListFilterState extends State<_TherapistsListFilter> {
   final TherapistsBloc therapistsBloc;
+
   _TherapistsListFilterState({required this.therapistsBloc});
-  int _startAge = 18; /// начальное значение для ползунка
-  int _endAge = 70; /// конечное значение для ползунка
-  int _minCostOfServices = 0;         ///минимальная начальная цена услуг
-  int _maxCostOfServices = 100000;    ///максимальная начальная цена услуг
+
+  int _startAge = 18;
+
+  /// начальное значение для ползунка
+  int _endAge = 70;
+
+  /// конечное значение для ползунка
+  int _minCostOfServices = 0;
+
+  ///минимальная начальная цена услуг
+  int _maxCostOfServices = 100000;
+
+  ///максимальная начальная цена услуг
 
   @override
   Widget build(BuildContext context) {
-     //final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
+    //final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -48,16 +64,19 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   onPressed: () => Navigator.pop(context),
                   child: Text(
                     S.of(context).close,
-                    style: const TextStyle(color: Colors.blue,
-                      fontWeight: FontWeight.bold,),
+                    style: const TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Center(
                   child: Text(
                     S.of(context).filters,
-                    style: const TextStyle(color: Colors.black,
-                        fontWeight: FontWeight.bold,),
-
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 TextButton(
@@ -72,8 +91,10 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   },
                   child: Text(
                     S.of(context).reset,
-                    style: const TextStyle(color: Colors.blue,
-                      fontWeight: FontWeight.bold,),
+                    style: const TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
@@ -97,7 +118,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (_minCostOfServices == 0 && _maxCostOfServices == 2500) {
+                        if (_minCostOfServices == 0 &&
+                            _maxCostOfServices == 2500) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -113,7 +135,9 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     'До 2 500 ₽̶',
                     style: TextStyle(
                       color:
-                          _minCostOfServices == 0 && _maxCostOfServices == 2500 ? Colors.white : Colors.black,
+                          _minCostOfServices == 0 && _maxCostOfServices == 2500
+                              ? Colors.white
+                              : Colors.black,
                     ),
                   ),
                 ),
@@ -128,7 +152,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (_minCostOfServices == 2500 && _maxCostOfServices == 5000) {
+                        if (_minCostOfServices == 2500 &&
+                            _maxCostOfServices == 5000) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -140,11 +165,11 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                       ),
                     ),
                   ),
-
                   child: Text(
                     '2 500 - 5 000 ₽̶',
                     style: TextStyle(
-                      color: _minCostOfServices == 2500 && _maxCostOfServices == 5000
+                      color: _minCostOfServices == 2500 &&
+                              _maxCostOfServices == 5000
                           ? Colors.white
                           : Colors.black,
                     ),
@@ -161,7 +186,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (_minCostOfServices == 5000 && _maxCostOfServices == 100000) {
+                        if (_minCostOfServices == 5000 &&
+                            _maxCostOfServices == 100000) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -176,7 +202,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   child: Text(
                     'Более 5 000 ₽̶',
                     style: TextStyle(
-                      color: _minCostOfServices == 5000 && _maxCostOfServices == 100000
+                      color: _minCostOfServices == 5000 &&
+                              _maxCostOfServices == 100000
                           ? Colors.white
                           : Colors.black,
                     ),
@@ -197,8 +224,9 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        if (_minCostOfServices == 0 && _maxCostOfServices == 100000) {
+                      (Set<MaterialState> states) {
+                        if (_minCostOfServices == 0 &&
+                            _maxCostOfServices == 100000) {
                           return const Color(0xFF38B7FF);
                         }
                         return const Color(0xFFE5F6FF);
@@ -210,11 +238,11 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                       ),
                     ),
                   ),
-
                   child: Text(
                     'Весь диапазон цен',
                     style: TextStyle(
-                      color: _minCostOfServices == 0 && _maxCostOfServices == 100000
+                      color: _minCostOfServices == 0 &&
+                              _maxCostOfServices == 100000
                           ? Colors.white
                           : Colors.black,
                     ),
@@ -241,7 +269,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   ),
                   Expanded(
                     child: RangeSlider(
-                      values: RangeValues(_startAge.toDouble(), _endAge.toDouble()),
+                      values:
+                          RangeValues(_startAge.toDouble(), _endAge.toDouble()),
                       min: 18,
                       max: 70,
                       divisions: 52,
@@ -278,15 +307,19 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 '\nЗначение переменной _minCostOfServices: $_minCostOfServices '
                 '\nЗначение переменной _maxCostOfServices: $_maxCostOfServices '
             );
-            therapistsBloc.add(AgeAndCostFilterEvent(_startAge , _endAge,
-              _minCostOfServices, _maxCostOfServices,),);
-            //context.push(AppRouter.therapistsListPath);
-            //print( 'Значение эвента: ${state.startAge}');
+            therapistsBloc.add(
+              AgeAndCostFilterEvent(
+                _startAge,
+                _endAge,
+                _minCostOfServices,
+                _maxCostOfServices,
+              ),
+            );
             context.pop();
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                  (Set<MaterialState> states) => const Color(0xFF38B7FF),
+              (Set<MaterialState> states) => const Color(0xFF38B7FF),
             ),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(

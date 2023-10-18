@@ -7,4 +7,11 @@ class AgeAndCostFilterEvent extends TherapistsEvent {
   final int? endAge;
   final int? minCostOfServices;
   final int? maxCostOfServices;
+
+  @override
+  String toString() {
+    return 'TherapistsEvent { startAge: $startAge, endAge: $endAge, '
+        'minCostOfServices: $minCostOfServices, '
+        'maxCostOfServices: $maxCostOfServices }';
+  }
 }

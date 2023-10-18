@@ -15,14 +15,12 @@ import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pa
 /// Страница просмотра списка терапевтов
 /// @TODO реализовать
 class TherapistsListPage extends StatelessWidget {
-  // TherapistsListPage({required this.therapistsBloc, super.key});
   TherapistsListPage({super.key});
-
-  final TherapistsBloc therapistsBloc = TherapistsBloc();
-  //final TherapistsBloc therapistsBloc;
 
   @override
   Widget build(BuildContext context) {
+  //  TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
+    TherapistsBloc therapistsBloc = TherapistsBloc();
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).therapists),
@@ -36,40 +34,39 @@ class TherapistsListPage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () async => TherapistsListFilter.openFilter(context,
-                therapistsBloc,),
+            onPressed: () async => TherapistsListFilter.openFilter(
+              context,
+              therapistsBloc,
+            ),
             icon: const Icon(OutlineIcons.settings),
           ),
         ],
       ),
-      body: BlocProvider(
-        create: (context) => therapistsBloc,
-        child: CustomScrollView(
-          slivers: [
-            BlocBuilder<TherapistsBloc, TherapistsState>(
-              bloc: therapistsBloc,
-              builder: (context, state) {
-                print( 'Значение эвента: ${state.startAge}');
-                return PaginatedSliverList(
-                  paginationStatus: PaginationStatus.lastPage,
-                  builder: (context, index) => TherapistListItem(
-                    therapist: therapistsListDetail[index],
-                    startAge: state.startAge,
-                    endAge: state.endAge,
-                    minCostOfServices: state.minCostOfServices,
-                    maxCostOfServices: state.maxCostOfServices,
-                  ),
-                  childCount: therapistsListDetail.length,
-                  separatorBuilder: (
-                    BuildContext context,
-                    int index,
-                  ) =>
-                      const Divider(height: 1),
-                );
-              },
-            ),
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+           BlocBuilder<TherapistsBloc, TherapistsState>(
+            bloc: therapistsBloc,
+             builder: (context, state) {
+              print('Значение эвента: ${state.startAge}');
+              return PaginatedSliverList(
+                paginationStatus: PaginationStatus.lastPage,
+                builder: (context, index) => TherapistListItem(
+                  therapist: therapistsListDetail[index],
+                  startAge: state.startAge,
+                  endAge: state.endAge,
+                  minCostOfServices: state.minCostOfServices,
+                  maxCostOfServices: state.maxCostOfServices,
+                ),
+                childCount: therapistsListDetail.length,
+                separatorBuilder: (
+                  BuildContext context,
+                  int index,
+                ) =>
+                    const Divider(height: 1),
+              );
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

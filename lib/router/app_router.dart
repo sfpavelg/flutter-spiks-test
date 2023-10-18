@@ -1,6 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_spiks_test/features/app/view/app_director.dart';
-import 'package:flutter_spiks_test/features/intro/intro_page.dart';
 import 'package:flutter_spiks_test/features/setting/setting_page.dart';
 import 'package:flutter_spiks_test/features/therapistDetailsPage/therapist_details_page.dart';
 import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
@@ -9,8 +8,7 @@ import 'package:go_router/go_router.dart';
 
 class AppRouter {
   AppRouter._();
-  // final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
-  final therapistsBloc = TherapistsBloc();
+
 
   static const String appDirector = 'appDirector';
   static const String appDirectorPath = '/';
@@ -49,6 +47,18 @@ class AppRouter {
         path: therapistsListPath,
         builder: (context, state) =>
             TherapistsListPage(),
+        // builder: (context, state) {
+        //   /// Получите экземпляр TherapistsBloc из параметров маршрута
+          // final therapistsBloc = state.extra['therapistsBloc'] as TherapistsBloc;
+          // return TherapistsListPage(therapistsBloc: therapistsBloc);
+
+          // final therapistsBloc = (state.extra as Map<String, dynamic>)['therapistsBloc'] as TherapistsBloc?;
+          // return therapistsBloc != null ? TherapistsListPage(therapistsBloc: therapistsBloc) : EmptyPage();
+
+          // final therapistsBloc = (state.extra as Map<String, dynamic>)['therapistsBloc'] as TherapistsBloc?;
+          // return therapistsBloc != null ? TherapistsListPage(therapistsBloc: therapistsBloc) : emptyPage();
+
+        // },
       ),
       GoRoute(
         name: therapistDetailsNamed,
@@ -60,4 +70,13 @@ class AppRouter {
       ),
     ],
   );
+  // Метод для возврата пустой страницы
+  static Widget emptyPage() {
+    return Scaffold(
+      body: Center(
+        child: Text('Empty Page'),
+      ),
+    );
+  }
+
 }
