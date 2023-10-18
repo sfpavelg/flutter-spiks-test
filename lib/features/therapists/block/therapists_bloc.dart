@@ -7,14 +7,6 @@ class TherapistsBloc extends Bloc<TherapistsEvent, TherapistsState> {
     on<AgeAndCostFilterEvent>((AgeAndCostFilterEvent event, emit) {
       emit(
         TherapistsState(
-          // state.startAge = event.startAge,
-          // state.endAge = event.endAge,
-          // state.minCostOfServices = event.minCostOfServices,
-          // state.maxCostOfServices = event.maxCostOfServices,
-          // startAge: event.startAge,
-          // endAge: event.endAge,
-          // minCostOfServices: event.minCostOfServices,
-          // maxCostOfServices: event.maxCostOfServices,
           event.startAge,
           event.endAge,
           event.minCostOfServices,

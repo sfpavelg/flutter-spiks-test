@@ -1,4 +1,3 @@
-
 class TherapistsState  {
     TherapistsState(this.startAge, this.endAge, this.minCostOfServices,
       this.maxCostOfServices,);

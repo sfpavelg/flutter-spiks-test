@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
 import 'package:flutter_spiks_test/features/therapists/block/therapists_event.dart';
-
 import 'package:flutter_spiks_test/generated/l10n.dart';
-import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:go_router/go_router.dart';
 
 class TherapistsListFilter {
@@ -52,7 +49,6 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
 
   @override
   Widget build(BuildContext context) {
-    //final TherapistsBloc therapistsBloc = BlocProvider.of<TherapistsBloc>(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
