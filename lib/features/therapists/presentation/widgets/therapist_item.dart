@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spiks_test/core/themes/theme_class.dart';
 import 'package:flutter_spiks_test/core/values/icons/outline_icons.dart';
 import 'package:flutter_spiks_test/data/repositories/models/therapists_models/therapists_models.dart';
-import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
 import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:flutter_spiks_test/widgets/gap/widgets/gap.dart';
 import 'package:flutter_spiks_test/widgets/widgets/rounded_avatar.dart';
@@ -93,9 +91,7 @@ class TherapistListItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-
-                    const SizedBox(height: 4),
+                     const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

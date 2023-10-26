@@ -1,7 +1,10 @@
-abstract class TherapistsEvent {}
-class AgeAndCostFilterEvent extends TherapistsEvent {
-  AgeAndCostFilterEvent(this.startAge, this.endAge, this.minCostOfServices,
-      this.maxCostOfServices,);
+class FilterEvent {
+  FilterEvent(
+      this.startAge,
+      this.endAge,
+      this.minCostOfServices,
+      this.maxCostOfServices,
+      );
 
   final int? startAge;
   final int? endAge;

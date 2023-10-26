@@ -304,7 +304,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                 '\nЗначение переменной _maxCostOfServices: $_maxCostOfServices '
             );
             therapistsBloc.add(
-              AgeAndCostFilterEvent(
+              FilterEvent(
                 _startAge,
                 _endAge,
                 _minCostOfServices,
