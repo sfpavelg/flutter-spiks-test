@@ -61,10 +61,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Psychologist\'s Age"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
-        "session_cost": MessageLookupByLibrary.simpleMessage("Session_cost"),
+        "session_cost": MessageLookupByLibrary.simpleMessage("Session Cost"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "show_psychologists":
             MessageLookupByLibrary.simpleMessage("Show Psychologists"),
+        "the_whole_price_range":
+            MessageLookupByLibrary.simpleMessage("The whole price range"),
         "therapist_list":
             MessageLookupByLibrary.simpleMessage("Therapist list"),
         "therapists": MessageLookupByLibrary.simpleMessage("Therapists"),

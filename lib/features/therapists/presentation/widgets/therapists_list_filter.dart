@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spiks_test/configs/app_config.dart';
 import 'package:flutter_spiks_test/features/therapists/block/therapists_bloc.dart';
 import 'package:flutter_spiks_test/features/therapists/block/therapists_event.dart';
 import 'package:flutter_spiks_test/generated/l10n.dart';
@@ -34,18 +35,17 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
 
   _TherapistsListFilterState({required this.therapistsBloc});
 
-  int _startAge = 18;
-
   /// начальное значение для ползунка
-  int _endAge = 70;
+  int _startAge = AppConfig.defaultStartAgeFilter;
 
   /// конечное значение для ползунка
-  int _minCostOfServices = 0;
+  int _endAge = AppConfig.defaultEndAgeFilter;
 
   ///минимальная начальная цена услуг
-  int _maxCostOfServices = 100000;
+  int _minCostOfServices = AppConfig.defaultMinCostOfServices;
 
   ///максимальная начальная цена услуг
+  int _maxCostOfServices = AppConfig.defaultMaxCostOfServices;
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +79,10 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   onPressed: () {
                     ///  логика сброса фильтра
                     setState(() {
-                      _startAge = 18;
-                      _endAge = 70;
-                      _minCostOfServices = 0;
-                      _maxCostOfServices = 100000;
+                      _startAge = AppConfig.defaultStartAgeFilter;
+                      _endAge = AppConfig.defaultEndAgeFilter;
+                      _minCostOfServices = AppConfig.defaultMinCostOfServices;
+                      _maxCostOfServices = AppConfig.defaultMaxCostOfServices;
                     });
                   },
                   child: Text(
@@ -96,9 +96,8 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Стоимость сессии',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Text(S.of(context).session_cost,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             Row(
@@ -128,7 +127,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     ),
                   ),
                   child: Text(
-                    'До 2 500 ₽̶',
+                    S.of(context).up_to_2500R,
                     style: TextStyle(
                       color:
                           _minCostOfServices == 0 && _maxCostOfServices == 2500
@@ -196,7 +195,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     ),
                   ),
                   child: Text(
-                    'Более 5 000 ₽̶',
+                    S.of(context).more_than_5000R,
                     style: TextStyle(
                       color: _minCostOfServices == 5000 &&
                               _maxCostOfServices == 100000
@@ -235,7 +234,7 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                     ),
                   ),
                   child: Text(
-                    'Весь диапазон цен',
+                     S.of(context).the_whole_price_range,
                     style: TextStyle(
                       color: _minCostOfServices == 0 &&
                               _maxCostOfServices == 100000
@@ -247,9 +246,9 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Возраст психолога',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Text(
+              S.of(context).psychologists_age,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -297,12 +296,6 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
         height: 64,
         child: ElevatedButton(
           onPressed: () {
-            // Действия
-            print('Значение переменной _startAge: $_startAge '
-                '\nЗначение переменной _endAge: $_endAge '
-                '\nЗначение переменной _minCostOfServices: $_minCostOfServices '
-                '\nЗначение переменной _maxCostOfServices: $_maxCostOfServices '
-            );
             therapistsBloc.add(
               FilterEvent(
                 _startAge,
@@ -323,9 +316,9 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
               ),
             ),
           ),
-          child: const Text(
-            'Показать психологов',
-            style: TextStyle(
+          child: Text(
+            S.of(context).show_psychologists,
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
             ),

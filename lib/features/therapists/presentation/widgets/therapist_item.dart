@@ -10,34 +10,13 @@ import 'package:go_router/go_router.dart';
 class TherapistListItem extends StatelessWidget {
   const TherapistListItem({
     required this.therapist,
-    required this.startAge,
-    required this.endAge,
-    required this.minCostOfServices,
-    required this.maxCostOfServices,
     super.key,
   });
 
   final TherapistDetail therapist;
-  final int? startAge;
-  final int? endAge;
-  final int? minCostOfServices;
-  final int? maxCostOfServices;
 
   @override
   Widget build(BuildContext context) {
-
-    /// Проверяем, находится ли age в диапазоне _startAge и _endAge
-    final bool isAgeInRange = therapist.age >= startAge! &&
-        therapist.age <= endAge!;
-
-    /// Проверяем, находится ли costOfServices в диапазоне _minCostOfServices и
-    /// _maxCostOfServices
-    final bool isCostInRange = therapist.costOfServices >= minCostOfServices!
-        && therapist.costOfServices <= maxCostOfServices!;
-    /// если ограничения не соответствуют, возвращаем пустой контейнер
-    if (!isAgeInRange || !isCostInRange) {
-      return Container();
-    }
     return Padding(
       padding: const EdgeInsets.all(4),
       child: InkWell(
@@ -55,7 +34,7 @@ class TherapistListItem extends StatelessWidget {
                 therapist.avatar,
                 size: 56,
               ),
-               const Gap(16),
+              const Gap(16),
               Expanded(
                 child: Column(
                   children: [
@@ -71,12 +50,12 @@ class TherapistListItem extends StatelessWidget {
                                 maxLines: 2,
                               ),
                               const Gap(4),
-                                Text(
-                                  therapist.mainSpecialization!,
-                                  style: context.textTheme.bodySmall,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                              Text(
+                                therapist.mainSpecialization!,
+                                style: context.textTheme.bodySmall,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                               const Gap(4),
                               Text(
                                 'Возраст - ${therapist.age} лет',
@@ -91,7 +70,7 @@ class TherapistListItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                     const SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -100,7 +79,7 @@ class TherapistListItem extends StatelessWidget {
                             Row(
                               children: [
                                 const Icon(
-                                   Icons.business_center,
+                                  Icons.business_center,
                                   color: Color(0xFF38B7FF),
                                 ),
                                 const SizedBox(width: 4),
@@ -114,11 +93,12 @@ class TherapistListItem extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Text( ///Отедяем пробелом последние 3 цифры, если число черырёхзначное
+                            Text(
+                              ///Отедяем пробелом последние 3 цифры, если число черырёхзначное
                               '${therapist.costOfServices.toString().replaceAllMapped(
-                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                     (Match m) => '${m[1]} ',
-                              )} ₽̶',
+                                  )} ₽̶',
                               style: context.textTheme.titleLarge,
                               maxLines: 1,
                             ),

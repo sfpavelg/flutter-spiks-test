@@ -32,9 +32,10 @@
  "close": "Close",
  "filters": "Filters",
  "reset": "Reset",
- "session_cost": "Session_cost",
+ "session_cost": "Session Cost",
  "up_to_2500R": "Up to 2500 ₽̶",
  "more_than_5000R": "More than 5000 ₽̶",
+ "the_whole_price_range": "The whole price range",
  "psychologists_age": "Psychologist's Age",
  "show_psychologists": "Show Psychologists"
 }

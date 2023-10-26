@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "setting": MessageLookupByLibrary.simpleMessage("Настройки"),
         "show_psychologists":
             MessageLookupByLibrary.simpleMessage("Показать Психологов"),
+        "the_whole_price_range":
+            MessageLookupByLibrary.simpleMessage("Весь диапазон цен"),
         "therapist_list": MessageLookupByLibrary.simpleMessage("Список врачей"),
         "therapists": MessageLookupByLibrary.simpleMessage("Психологи"),
         "try_again":

@@ -48,13 +48,24 @@ class TherapistsListPage extends StatelessWidget {
             builder: (context, state) {
               return PaginatedSliverList(
                 paginationStatus: PaginationStatus.lastPage,
-                builder: (context, index) => TherapistListItem(
-                  therapist: therapistsListDetail[index],
-                  startAge: state.startAge,
-                  endAge: state.endAge,
-                  minCostOfServices: state.minCostOfServices,
-                  maxCostOfServices: state.maxCostOfServices,
-                ),
+                builder: (context, index) {
+                  final therapist = therapistsListDetail[index];
+                  final bool isAgeInRange = state.startAge != null &&
+                      state.endAge != null &&
+                      therapist.age >= state.startAge! &&
+                      therapist.age <= state.endAge!;
+                  final bool isCostInRange = state.minCostOfServices != null &&
+                      state.maxCostOfServices != null &&
+                      therapist.costOfServices >= state.minCostOfServices! &&
+                      therapist.costOfServices <= state.maxCostOfServices!;
+                  if (!isAgeInRange || !isCostInRange) {
+                    /// Пустой контейнер для элементов, не соответствующих ограничениям
+                    return Container();
+                  }
+                  return TherapistListItem(
+                    therapist: therapist,
+                  );
+                },
                 childCount: therapistsListDetail.length,
                 separatorBuilder: (
                   BuildContext context,

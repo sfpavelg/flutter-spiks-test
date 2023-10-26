@@ -360,10 +360,10 @@ class S {
     );
   }
 
-  /// `Session_cost`
+  /// `Session Cost`
   String get session_cost {
     return Intl.message(
-      'Session_cost',
+      'Session Cost',
       name: 'session_cost',
       desc: '',
       args: [],
@@ -385,6 +385,16 @@ class S {
     return Intl.message(
       'More than 5000 ₽̶',
       name: 'more_than_5000R',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The whole price range`
+  String get the_whole_price_range {
+    return Intl.message(
+      'The whole price range',
+      name: 'the_whole_price_range',
       desc: '',
       args: [],
     );
