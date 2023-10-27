@@ -13,7 +13,6 @@ import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/paginated
 import 'package:flutter_spiks_test/widgets/scroll_views/paginated_list/values/pagination_status.dart';
 
 /// Страница просмотра списка терапевтов
-/// @TODO реализовать
 class TherapistsListPage extends StatelessWidget {
   const TherapistsListPage({super.key});
 
@@ -60,6 +59,7 @@ class TherapistsListPage extends StatelessWidget {
                       therapist.costOfServices <= state.maxCostOfServices!;
                   if (!isAgeInRange || !isCostInRange) {
                     /// Пустой контейнер для элементов, не соответствующих ограничениям
+                    // return Container();
                     return Container();
                   }
                   return TherapistListItem(

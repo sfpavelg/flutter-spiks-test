@@ -37,8 +37,6 @@ class AppRouter {
         path: settingPath,
         builder: (context, state) => const SettingPage(),
       ),
-
-      // @TODO реализовать
       GoRoute(
         name: therapistsListNamed,
         path: therapistsListPath,

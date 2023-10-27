@@ -7,14 +7,14 @@ import 'package:flutter_spiks_test/router/app_router.dart';
 import 'package:go_router/go_router.dart';
 
 /// Сраница подробной карточки терапевта
-/// @TODO реализовать
 class TherapistDetailsPage extends StatelessWidget {
   const TherapistDetailsPage({this.therapistId, super.key});
 
   final String? therapistId;
 
   /// Берём  TherapistDetail из массива по therapistId
-  TherapistDetail getTherapistFromDBbyId(String? id, List<TherapistDetail> therapistsList) {
+  TherapistDetail getTherapistFromDBbyId(
+      String? id, List<TherapistDetail> therapistsList) {
     return therapistsList.firstWhere((therapist) => therapist.id == id);
   }
 
@@ -28,11 +28,14 @@ class TherapistDetailsPage extends StatelessWidget {
     final String surname =
         getTherapistFromDBbyId(therapistId, therapistsListDetail).surname;
     final String? mainSpecialization =
-        getTherapistFromDBbyId(therapistId, therapistsListDetail).mainSpecialization;
+        getTherapistFromDBbyId(therapistId, therapistsListDetail)
+            .mainSpecialization;
     final int costOfServices =
-        getTherapistFromDBbyId(therapistId, therapistsListDetail).costOfServices;
+        getTherapistFromDBbyId(therapistId, therapistsListDetail)
+            .costOfServices;
     final int costOfServicesGroup =
-        getTherapistFromDBbyId(therapistId, therapistsListDetail).costOfServicesGroup;
+        getTherapistFromDBbyId(therapistId, therapistsListDetail)
+            .costOfServicesGroup;
     final int experience =
         getTherapistFromDBbyId(therapistId, therapistsListDetail).experience;
     final String? biography =
@@ -41,9 +44,11 @@ class TherapistDetailsPage extends StatelessWidget {
         getTherapistFromDBbyId(therapistId, therapistsListDetail).age;
 
     ///Цвет для иконки портфеля
-    const Color color1 = Color(0xFFF34384); // #F34384
-    const Color color2 = Color(0xFF4510DB); // #4510DB
-    final Color? blendedColor = Color.lerp(color1, color2, 0.5); // 50% blend
+    const Color color1 = Color(0xFFF34384);
+    const Color color2 = Color(0xFF4510DB);
+    final Color? blendedColor = Color.lerp(color1, color2, 0.5);
+
+    /// 50% blend
 
     ///Делаем StatusBar прозрачным
     SystemChrome.setSystemUIOverlayStyle(
@@ -62,14 +67,17 @@ class TherapistDetailsPage extends StatelessWidget {
           onTap: () {
             context.go(AppRouter.therapistsListPath);
           },
-          child: const DecoratedBox(
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
+          child: const Padding(
+            padding: EdgeInsets.all(8),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -108,9 +116,9 @@ class TherapistDetailsPage extends StatelessWidget {
                     width: double.infinity,
                     height: 2000,
                     padding: const EdgeInsets.all(20),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: context.scheme.primary.withOpacity(.2),
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(48),
                         topRight: Radius.circular(48),
                       ),
@@ -196,9 +204,10 @@ class TherapistDetailsPage extends StatelessWidget {
                                         children: [
                                           Text(
                                             '${costOfServices.toString().replaceAllMapped(
-                                              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                                  RegExp(
+                                                      r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                                   (Match m) => '${m[1]} ',
-                                            )} ₽̶ /час',
+                                                )} ₽̶ /час',
                                             textAlign: TextAlign.center,
                                             style: const TextStyle(
                                               fontSize: 18,
@@ -229,14 +238,13 @@ class TherapistDetailsPage extends StatelessWidget {
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        // crossAxisAlignment:
-                                        //     CrossAxisAlignment.center,
                                         children: [
                                           Text(
                                             '${costOfServicesGroup.toString().replaceAllMapped(
-                                              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                                  RegExp(
+                                                      r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                                   (Match m) => '${m[1]} ',
-                                            )} ₽̶ /час',
+                                                )} ₽̶ /час',
                                             textAlign: TextAlign.center,
                                             style: const TextStyle(
                                               fontSize: 18,
@@ -272,7 +280,7 @@ class TherapistDetailsPage extends StatelessWidget {
                             Text(
                               '$biography',
                               style: const TextStyle(fontSize: 16),
-                              softWrap: true, /// Перенос текста
+                              softWrap: true,
                             ),
                           ],
                         ),

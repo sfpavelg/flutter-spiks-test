@@ -70,7 +70,6 @@ class _TherapistsListFilterState extends State<_TherapistsListFilter> {
                   child: Text(
                     S.of(context).filters,
                     style: const TextStyle(
-                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
